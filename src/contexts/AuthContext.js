@@ -37,7 +37,7 @@ const AuthProvider = (props) => {
          } else {
             setUser(null);
          }
-         console.log(user);
+         // console.log(user);
       });
    }, []);
    return (
