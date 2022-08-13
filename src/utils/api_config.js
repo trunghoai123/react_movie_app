@@ -11,7 +11,7 @@ export const tmdbAPI = {
       return `${tmdbEndPoint}/${movieId}?api_key=${apiKey}&language=en-US`;
    },
    getImage: (type = 'original', url) => {
-      return `http://image.tmdb.org/t/p/${type}${url}`;
+      return `https://image.tmdb.org/t/p/${type}${url}`;
    },
    // getCredits: (movieId = '') => {
    //    return `${tmdbEndPoint}/${movieId}/credits?api_key=${apiKey}`;
