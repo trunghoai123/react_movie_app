@@ -26,16 +26,16 @@ const NavBar = () => {
    return (
       <NavBarStyles className='center_navbar'>
          <NavLink
-            to={'/tvseries'}
-            className={({ isActive }) => (isActive ? 'focus_link' : '')}
-         >
-            <span className='center_nav-item'>TV Series</span>
-         </NavLink>
-         <NavLink
             to={'/movies/movies-list'}
             className={({ isActive }) => (isActive ? 'focus_link' : '')}
          >
             <span className='center_nav-item'>Movies</span>
+         </NavLink>
+         <NavLink
+            to={'/tvseries'}
+            className={({ isActive }) => (isActive ? 'focus_link' : '')}
+         >
+            <span className='center_nav-item'>TV Series</span>
          </NavLink>
          <NavLink
             to={'/anime'}

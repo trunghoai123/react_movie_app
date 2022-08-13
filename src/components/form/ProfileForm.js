@@ -162,28 +162,19 @@ const ProfileForm = () => {
    }, [errors]);
 
    const handleSubmitForm = async (values) => {
-      // console.log(user);
-      // updateDoc(doc(db, 'users', 'AOoGGi9fmJlWjz7w8cpJ'), {
-      //    ...values,
-      //    photoURL: selectedImg || values?.photoURL || '',
-      // });
       try {
-         console.log(values);
-         console.log('photoURL: ', values.photoURL);
-         console.log('selectedImage: ', selectedImg);
          await updateDoc(doc(db, 'users', userId), {
             ...values,
             photoURL: selectedImg || values?.photoURL || '',
          });
          // setSelectedImg(null);
-         // setValue('photoURL');
          window.location.reload(false);
       } catch (error) {
          console.log(error);
       }
    };
    const handleChangeImage = (e) => {
-      console.log(e.target.files[0]);
+      // console.log(e.target.files[0]);
       const file = e.target.files[0];
       const storageRef = ref(storage, 'images/' + uuidv4());
       const uploadTask = uploadBytesResumable(storageRef, file, metadata);

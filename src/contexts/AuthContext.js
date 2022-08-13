@@ -16,8 +16,6 @@ const AuthProvider = (props) => {
             getDoc(doc(db, 'users', user.uid))
                .then((snapshot) => {
                   if (!snapshot.data()) {
-                     console.log('chua co tai khoan');
-
                      setDoc(doc(db, 'users', user.uid), {
                         fullname: user.displayName,
                         email: user.email,
@@ -25,7 +23,6 @@ const AuthProvider = (props) => {
                         // password: values.password,
                      });
                   } else {
-                     console.log('da co tai khoan');
                      setUser({
                         ...user,
                         ...snapshot.data(),
