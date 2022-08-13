@@ -13,7 +13,7 @@ import DatePicker from '../datePicker/DatePicker';
 import Textarea from '../input/Textarea';
 import ImagePicker from '../imagePicker.js/ImagePicker';
 import { useParams } from 'react-router-dom';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase-app/fireabase-config';
 import {
    getStorage,
@@ -161,13 +161,26 @@ const ProfileForm = () => {
       }
    }, [errors]);
 
-   const handleSubmitForm = (values) => {
-      console.log(values);
-      setDoc(doc(db, 'users', userId), {
-         ...values,
-         photoURL: selectedImg || values?.photoURL || '',
-      });
-      window.location.reload(false);
+   const handleSubmitForm = async (values) => {
+      // console.log(user);
+      // updateDoc(doc(db, 'users', 'AOoGGi9fmJlWjz7w8cpJ'), {
+      //    ...values,
+      //    photoURL: selectedImg || values?.photoURL || '',
+      // });
+      try {
+         console.log(values);
+         console.log('photoURL: ', values.photoURL);
+         console.log('selectedImage: ', selectedImg);
+         await updateDoc(doc(db, 'users', userId), {
+            ...values,
+            photoURL: selectedImg || values?.photoURL || '',
+         });
+         // setSelectedImg(null);
+         // setValue('photoURL');
+         window.location.reload(false);
+      } catch (error) {
+         console.log(error);
+      }
    };
    const handleChangeImage = (e) => {
       console.log(e.target.files[0]);
